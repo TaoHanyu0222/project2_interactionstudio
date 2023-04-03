@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css"
+    />
+    <script src="./assets/jq.min.js"></script>
+    <script src="./assets/font.js"></script>
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'hub3mfp',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      /* font-family: 'zen-kaku-gothic-antique', sans-serif; */
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    
+    .head {
+      height: 80px;
+      overflow: hidden;
+    }
+    .none {
+      opacity: 0;
+    }
+    .tips-wrap {
+      display: flex;
+      width: 3000px;
+      align-items: center;
+      height: 100%;
+      animation: move 10s linear 1s infinite;
+      
+    }
+    
+    .tips {
+      padding: 0 15px;
+      width: 542px;
+      mix-blend-mode:difference;
+    }
+    .tips h1 {
+      font-size: 40px;
+      font-weight: normal;
+      position: relative;
+      
+    }
+    .tips p {
+      font-size: 20px;
+      white-space: break-spaces;
+      letter-spacing: 5px;
+    }
+    .container {
+      min-height: calc(100% - 80px);
+      display: flex;
+    }
+    .menu {
+      width: 400px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .catage {
+      margin-bottom: 20px;
+      padding-left: 15px;
+      line-height: 30px;
+    }
+
+    .catage li.active {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .catage li:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .content {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      align-items: center;
+      padding-right: 100px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      .content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .light-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      background: #fff;
+      display: grid;
+      grid-template-rows: repeat(400, 1fr);
+    }
+    .light0 div:nth-child(4n) {
+      background: #fff;
+    }
+    .light0 div:nth-child(4n + 1) {
+      background: #03aaed;
+    }
+    .light0 div:nth-child(4n + 2) {
+      background: #f38066;
+    }
+    .light0 div:nth-child(4n + 3) {
+      background: #ffd966;
+    }
+    .light1 div:nth-child(2n) {
+      background: #fff;
+    }
+    .light1 div:nth-child(2n + 1) {
+      background: rgb(212, 212, 212);
+    }
+    .light2 div:nth-child(2n) {
+      background: #f38066;
+    }
+    .light2 div:nth-child(2n + 1) {
+      background: #fff;
+    }
+    .light3 div:nth-child(2n) {
+      background: #f38066;
+    }
+    .light3 div:nth-child(2n + 1) {
+      background: #03aaed;
+    }
+    .light4 div:nth-child(2n) {
+      background: #ffd966;
+    }
+    .light4 div:nth-child(2n + 1) {
+      background: #ffffff;
+    }
+    @keyframes move {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(-573px, 0);
+      }
+    }
+    .bg {
+      width: 50px;
+      height: 50px;
+      top: 0;
+      right: 73px;
+      position: absolute;
+      background-size: contain;
+    }
+    .bg1 {
+      background-image: url(./assets/img/home1.png) no-repeat;
+    }
+    .card {
+      padding: 17px;
+      line-height: 22px;
+      word-break: break-all;
+      text-align: center;
+    }
+    .card .photo {
+      width: 250px;
+      height: 250px;
+      display: inline-block;
+      margin-bottom: 10px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+    }
+    .content.gray .card .photo {
+      -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+      filter: grayscale(100%);
+    }
+    .card .photo:hover {
+      -webkit-filter: none;
+      filter: none;
+    }
+    .photo img {
+      width: 100%;
+    }
+    .menu-wrap {
+      position: fixed;
+      top: 45%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+    .popup {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: fixed;
+      background: rgba(255, 255, 255, 0);
+      display: none;
+      font-family: "moonblossom", sans-serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
+
+
+     
+    }
+    .popup-center {
+      position: absolute;
+      display: flex;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .popup-center .desc {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-width: 505px;
+      
+      
+    }
+  .tittle{
+    position: relative;
+    left: 40%;
+    top: 5%;
+    font-size: 50px;
+    transform: rotate(-4deg);
+  }
+    .popup-center .desc p {
+      line-height: 45px;
+      text-transform: capitalize;
+    
+    }
+    .popup-center .pic img {
+      max-width: 600px;
+      transform: rotate(15deg);
+    }
+    .light-btn {
+      position: fixed;
+      cursor: pointer;
+      bottom: 60px;
+      left: 35px;
+      font-size: 15px;
+    }
+    .light-btn i {
+      font-size: 30px;
+    }
+    @media screen and (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      .content {
+        padding-right: 0;
+      }
+      .menu {
+        width: calc(100vw - 40px);
+      }
+      .menu-wrap {
+        position: relative;
+        transform: translateY(0);
+      }
+      .light-btn {
+        position: relative;
+        margin-left: 35px;
+        bottom: 0;
+        left: 0;
+      }
+      .card {
+        width: calc(50vw - 44px);
+      }
+      .card .photo {
+        width: 100%;
+      }
+      .popup-center {
+        flex-direction: column-reverse;
+      }
+      .popup-center .pic img {
+        max-width: 80vw;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      .menu {
+      width: 400px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .catage {
+      margin-bottom: 20px;
+      padding-left: 15px;
+      line-height: 24px;
+    }
+      .container {
+        flex-direction: column;
+      }
+      .content {
+        padding-right: 0;
+      }
+      .menu {
+        width: calc(100vw - 40px);
+      }
+      .menu-wrap {
+        position: relative;
+        transform: translateY(0);
+      }
+      .light-btn {
+        position: relative;
+        margin-left: 35px;
+        bottom: 0;
+        left: 0;
+      }
+      .card {
+        width: calc(50vw - 44px);
+      }
+      .card .photo {
+        width: 100%;
+      }
+      .popup-center {
+        flex-direction: column-reverse;
+      }
+      .popup-center .pic img {
+        max-width: 80vw;
+      }
+    }
+    
+  </style>
+  <body>
+   
+    <div class="head">
+      <div class="tips-wrap">
+        <div class="tips">
+          <h1>
+            歡迎光臨致民路菜市場
+            <div class="bg"></div>
+          </h1>
+          <p>WELCOME TO ZHIMIN ROAD MARKET</p>
+        </div>
+        <div class="tips">
+          <h1>
+            歡迎光臨致民路菜市場
+            <div class="bg"></div>
+          </h1>
+          <p>WELCOME TO ZHIMIN ROAD MARKET</p>
+        </div>
+        <div class="tips">
+          <h1>
+            歡迎光臨致民路菜市場
+            <div class="bg"></div>
+          </h1>
+          <p>WELCOME TO ZHIMIN ROAD MARKET</p>
+        </div>
+        <div class="tips">
+          <h1>
+            歡迎光臨致民路菜市場
+            <div class="bg"></div>
+          </h1>
+          <p>WELCOME TO ZHIMIN ROAD MARKET</p>
+        </div>
+        <div class="tips">
+          <h1>
+            歡迎光臨致民路菜市場
+            <div class="bg"></div>
+          </h1>
+          <p>WELCOME TO ZHIMIN ROAD MARKET</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="menu">
+        <div class="menu-wrap">
+          <ul class="catage" id="catage">
+            <li class="active" value="">所有種類/All Categories</li>
+            <li value="vegetable">新鮮蔬菜/Fresh Produce</li>
+            <li value="meat">肉類/Meat</li>
+            <li value="seafood">鮮/Seafood</li>
+            <li value="fruit">水果/fruit</li>
+          </ul>
+          <ul class="catage" id="shop">
+            <li class="active" value="">所有店鋪/All featured shops</li>
+            <li value="Antie Su Very fresh fruits">
+              Antie Su Very fresh fruits
+            </li>
+            <li value="butcher Wang">butcher Wang</li>
+            <li value="great seafood">great seafood</li>
+            <li value="Mr. Li Grocery">Mr. Li Grocery</li>
+          </ul>
+          <ul class="catage" id="light">
+            <li class="active" light="light0" value="">
+              所有光源/All light source
+            </li>
+            <li light="light1" value="white">白/Whites &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<img src="w.png"style="width:18px"></li>
+            <li light="light2" value="red/White">紅白/White&Reds &nbsp;<img src="wr.png"style="width:20px"></li>
+            <li light="light3" value="blue/red">藍紅/Blue&Reds &nbsp;&nbsp;&nbsp;<img src="br.png"style="width:20px"></li>
+            <li light="light4" value="natural">自然光/Neutrals &nbsp;&nbsp;&nbsp;<img src="n.png"style="width: 20px"></li>
+          </ul>
+        </div>
+        <div class="light-btn" id="toggle">
+          <i class="fa-solid fa-toggle-on"></i>
+          <!-- <i class="fa-solid fa-toggle-off"></i> -->
+          <br />
+          <span>開燈LIGHT ON/關燈OFF</span>
+        </div>
+      </div>
+      <div class="content" id="contain"></div>
+    </div>
+    <div class="popup">
+      <div class="tittle">
+        <p>" PRODUCT PROFILE "</p>
+      </div>
+      
+      <div class="popup-center">
+
+        <div class="desc">
+          <p>NAME:</p>
+          <p>YOU CAN FIND IT IN:</p>
+          <p>Its favorite light source:</p>
+        </div>
+        <div class="pic">
+          <img src="./assets/img/blue&red1.png" />
+          
+        </div>
+       
+      </div>
+    </div>
+    <div class="light-bg light">
+      <img class="background" src="19250225.png" style="position: fixed; left:-50px; top: -30px; width:2000px;height: 1005px; mix-blend-mode:multiply; opacity: 0.5;">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>
+<script>
+  $(document).ready(function () {
+    let allData = []
+    let filtered = []
+    let condition = {
+      categories: '',
+      featuredshops: '',
+      lightsource: ''
+    }
+    // get json
+    fetch('./data/data.json')
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        allData = data
+        filter()
+      })
+    //select event
+    $('#light li').click(function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      const light = $(this).attr('light')
+      $('.light-bg')
+        .removeClass()
+        .addClass('light-bg ' + light)
+    })
+
+    $('#toggle').click(function () {
+      let dom = $(this).find('i.fa-solid')
+      if (dom.hasClass('fa-toggle-on')) {
+        dom.removeClass('fa-toggle-on').addClass('fa-toggle-off')
+        $('#contain').addClass('gray')
+      } else {
+        dom.removeClass('fa-toggle-off').addClass('fa-toggle-on')
+        $('#contain').removeClass('gray')
+      }
+    })
+    $('.popup').click(function () {
+      $(this).hide()
+      $('.container,.head').removeClass('none')
+      let defaultCls = $('.light-bg').attr('defalutCls')
+      $('.light-bg')
+        .removeClass()
+        .addClass(defaultCls || '')
+    })
+    //pick img
+    $('#contain').on('click', '.card', function () {
+      let index = Number($(this).attr('index'))
+      let cardinfo = filtered[index]
+      console.log(cardinfo)
+      const html = `<div class="desc">
+                  <p>Name: ${cardinfo.name}</p>
+                  <p>You can find in: ${cardinfo.featuredshops}</p>
+                  <p>Its favorite light source: ${cardinfo.lightsource}</p>
+                </div>
+                <div class="pic">
+                  <img src="./assets/img/${cardinfo.png}" />
+                </div>`
+      $('.popup-center').html(html)
+      $('.popup').show()
+      let map = {
+        white: 'light1',
+        'red/White': 'light2',
+        'blue/red': 'light3',
+        natural: 'light4'
+      }
+      let light = map[cardinfo.lightsource]
+      let defaultCls = $('.light-bg').attr('class')
+      $('.light-bg')
+        .attr('defalutCls', defaultCls)
+        .removeClass()
+        .addClass('light-bg ' + light)
+      $('.container,.head').addClass('none')
+    })
+    // filter-categories-featuredshops-lightsource
+    function filter() {
+      filtered = allData.filter((item) => {
+        const a =
+          condition.categories == '' || condition.categories == item.categories
+        const b =
+          condition.featuredshops == '' ||
+          condition.featuredshops == item.featuredshops
+        const c =
+          condition.lightsource == '' ||
+          condition.lightsource == item.lightsource
+        return a && b && c
+      })
+      let box = document.querySelector('#contain')
+      let out = ''
+      let index = 0
+      for (let item of filtered) {
+        out += `<div class="card" index="${index++}" >
+              <div class="photo" style="background-image:url('./assets/img/${
+                item.png
+              }')"></div>
+              <div class="category">${item.categories}</div>
+              <div class="description">${item.name}</div>
+            </div>`
+      }
+      box.innerHTML = out
+    }
+    $('#catage li').click(function () {
+      condition.lightsource = ''
+      $('#light li').first().addClass('active').siblings().removeClass('active')
+      $('.light-bg').removeClass().addClass('light-bg')
+      condition.categories = $(this).attr('value')
+      $(this).addClass('active').siblings().removeClass('active')
+      filter()
+    })
+    $('#shop li').click(function () {
+      condition.lightsource = ''
+      $('#light li').first().addClass('active').siblings().removeClass('active')
+      $('.light-bg').removeClass().addClass('light-bg')
+      condition.featuredshops = $(this).attr('value')
+      $(this).addClass('active').siblings().removeClass('active')
+      filter()
+    })
+    $('#light li').click(function () {
+      condition.categories = ''
+      condition.featuredshops = ''
+      $('#shop li').first().addClass('active').siblings().removeClass('active')
+      $('#catage li')
+        .first()
+        .addClass('active')
+        .siblings()
+        .removeClass('active')
+      condition.lightsource = $(this).attr('value')
+      $(this).addClass('active').siblings().removeClass('active')
+      filter()
+    })
+  })
+</script>
